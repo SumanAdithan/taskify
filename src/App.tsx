@@ -1,8 +1,13 @@
 import { FC } from 'react';
+import TaskProvider from './provider/TaskProvider';
+import TaskifyRoutes from './routes';
 
 const App: FC = () => {
-    console.log(Date());
-    return <div>App</div>;
+    return (
+        <TaskProvider>
+            <TaskifyRoutes />
+        </TaskProvider>
+    );
 };
 
 export default App;

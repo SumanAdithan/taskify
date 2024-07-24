@@ -10,6 +10,9 @@ export const taskReducer = (
         case 'ADD_TASK':
             console.log('hello world');
             return state;
+        case 'console':
+            console.log(action.payload);
+            return state;
         default:
             return state;
     }
