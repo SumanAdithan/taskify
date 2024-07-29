@@ -1,8 +1,8 @@
 import { FC, ReactNode, Reducer, useReducer } from 'react';
-import { taskReducer } from '../reducer/taskReducer';
-import { TaskState } from '../models/taskModel';
-import { TaskContext } from '../context/taskContext';
-import { TaskAction } from '../actions/taskAction';
+import { taskReducer } from '@reducer/taskReducer';
+import { TaskState } from '@models/taskModel';
+import { TaskContext } from '@context/taskContext';
+import { TaskAction } from '@actions/taskAction';
 
 // initial state for task
 const initialState: TaskState = {

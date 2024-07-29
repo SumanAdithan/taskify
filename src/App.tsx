@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import TaskProvider from './provider/TaskProvider';
-import TaskifyRoutes from './routes';
+import TaskProvider from '@provider/TaskProvider';
+import TaskifyRoutes from '@routes';
 
 const App: FC = () => {
     return (

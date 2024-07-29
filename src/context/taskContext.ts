@@ -1,6 +1,6 @@
 import { createContext, Dispatch } from 'react';
-import { TaskAction } from '../actions/taskAction';
-import { TaskState } from '../models/taskModel';
+import { TaskAction } from '@actions/taskAction';
+import { TaskState } from '@models/taskModel';
 
 // interface for task context props
 export interface taskContextProps {

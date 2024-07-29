@@ -5,7 +5,7 @@ interface MainProps {
 }
 
 const Main: FC<MainProps> = ({ children }) => {
-    return <main className='flex-1 p-4'>{children}</main>;
+    return <main>{children}</main>;
 };
 
 export default Main;

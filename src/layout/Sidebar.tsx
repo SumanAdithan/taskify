@@ -2,7 +2,13 @@ import { FC } from 'react';
 
 const Sidebar: FC = () => {
     return (
-        <aside className='bg-gray-800 text-white min-w-64  w-64 p-4'>
+        <aside className='bg-white text-black min-w-64 w-64 px-8 py-4 shadow-xl'>
+            <div>
+                <div>
+                    <img src='' alt='' />
+                </div>
+                <div>TASKIFY</div>
+            </div>
             <ul>
                 <li className='mb-2'>
                     <a>Task 1</a>

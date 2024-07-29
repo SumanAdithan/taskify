@@ -1,4 +1,4 @@
-import { Task } from '../models/taskModel';
+import { Task } from '@models/taskModel';
 
 // action type for task reducer
 export type TaskAction =

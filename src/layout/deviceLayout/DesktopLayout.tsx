@@ -1,12 +1,12 @@
 import { FC } from 'react';
-import Sidebar from '../Sidebar';
-import Navbar from '../Navbar';
-import Main from '../Main';
+import Sidebar from '@layout/Sidebar';
+import Navbar from '@layout/Navbar';
+import Main from '@layout/Main';
 import { Outlet } from 'react-router-dom';
 
 const DesktopLayout: FC = () => {
     return (
-        <div className='flex  h-screen'>
+        <div className='flex bg-background w-screen h-screen'>
             <Sidebar />
             <div className='w-full'>
                 <Navbar />

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { TaskContext, taskContextProps } from '../context/taskContext';
+import { TaskContext, taskContextProps } from '@context/taskContext';
 
 // custom hook for accessing taskContext
 export const useTaskContext = (): taskContextProps => {

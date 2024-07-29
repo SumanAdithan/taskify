@@ -1,5 +1,5 @@
-import { TaskAction } from '../actions/taskAction';
-import { TaskState } from '../models/taskModel';
+import { TaskAction } from '@actions/taskAction';
+import { TaskState } from '@models/taskModel';
 
 // reducer function for task
 export const taskReducer = (
