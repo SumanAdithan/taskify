@@ -1,11 +1,12 @@
 import { FC } from 'react';
 import { images } from '@/utils/images';
-import { icons } from '@/utils/images';
+import { MdEdit } from 'react-icons/md';
+import { MdDelete } from 'react-icons/md';
 
 const Sidebar: FC = () => {
     return (
         <aside className='bg-white text-black min-w-64 w-64 px-8 py-4 shadow-xl overflow-y-scroll'>
-            <div className='flex items-center mt-2 space-x-2'>
+            <div className='flex items-center mt-2 gap-2'>
                 <div className='w-10 h-10'>
                     <img
                         className='w-full h-full'
@@ -14,7 +15,7 @@ const Sidebar: FC = () => {
                     />
                 </div>
                 <div className='text-2xl'>TASKIFY</div>
-                <button className='bg-black rounded-full w-5 h-5 text-white font-bold leading-4'>
+                <button className='bg-black rounded-full w-5 h-5 text-white font-bold leading-4 ml-4'>
                     +
                 </button>
             </div>
@@ -24,10 +25,10 @@ const Sidebar: FC = () => {
                         <div>Task 1</div>
                         <div className='space-x-2'>
                             <button className='h-4 w-4'>
-                                <img src={icons.editIcon} alt='edit' />
+                                <MdEdit className='text-base' />
                             </button>
                             <button className='h-4 w-4'>
-                                <img src={icons.deleteIcon} alt='delete' />
+                                <MdDelete className='text-base' />
                             </button>
                         </div>
                     </div>
@@ -37,23 +38,10 @@ const Sidebar: FC = () => {
                         <div>Task 2</div>
                         <div className='space-x-2'>
                             <button className='h-4 w-4'>
-                                <img src={icons.editIcon} alt='edit' />
+                                <MdEdit className='text-base' />
                             </button>
                             <button className='h-4 w-4'>
-                                <img src={icons.deleteIcon} alt='delete' />
-                            </button>
-                        </div>
-                    </div>
-                </li>
-                <li className='rounded-md p-2 cursor-pointer hover:bg-primary'>
-                    <div className='flex items-center justify-between'>
-                        <div>Task 3</div>
-                        <div className='space-x-2'>
-                            <button className='h-4 w-4'>
-                                <img src={icons.editIcon} alt='edit' />
-                            </button>
-                            <button className='h-4 w-4'>
-                                <img src={icons.deleteIcon} alt='delete' />
+                                <MdDelete className='text-base' />
                             </button>
                         </div>
                     </div>
@@ -63,10 +51,23 @@ const Sidebar: FC = () => {
                         <div>Task 3</div>
                         <div className='space-x-2'>
                             <button className='h-4 w-4'>
-                                <img src={icons.editIcon} alt='edit' />
+                                <MdEdit className='text-base' />
                             </button>
                             <button className='h-4 w-4'>
-                                <img src={icons.deleteIcon} alt='delete' />
+                                <MdDelete className='text-base' />
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li className='rounded-md p-2 cursor-pointer hover:bg-primary'>
+                    <div className='flex items-center justify-between'>
+                        <div>Task 3</div>
+                        <div className='space-x-2'>
+                            <button className='h-4 w-4'>
+                                <MdEdit className='text-base' />
+                            </button>
+                            <button className='h-4 w-4'>
+                                <MdDelete className='text-base' />
                             </button>
                         </div>
                     </div>
