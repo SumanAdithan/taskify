@@ -25,6 +25,7 @@
             "@reducer/*": ["reducer/*"],
             "@routes": ["routes"],
             "@styles/*": ["styles/*"],
+            "@ui/*": ["ui/*"],
             "@utils/*": ["utils/*"]
         }
     }

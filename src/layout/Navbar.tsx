@@ -57,7 +57,7 @@ const Navbar: FC = () => {
     }, []);
 
     return (
-        <nav className='bg-background p-6 text-black shadow-md flex justify-between items-center'>
+        <nav className='bg-background p-6 text-white shadow-md flex justify-between items-center border-b-2 border-b-border'>
             <div className='flex justify-center items-center gap-2'>
                 <div className='bg-primary p-1 rounded'>
                     <RxHamburgerMenu className='text-3xl text-white' />
@@ -72,14 +72,14 @@ const Navbar: FC = () => {
                         onChange={handleSearchChange}
                         type='text'
                         placeholder='search a task'
-                        className='p-2 focus:border-primary border-2 outline-none rounded'
+                        className='p-2 focus:border-primary text-border border-2 outline-none rounded'
                         onClick={handleFocus}
                     />
                     {isListboxOpen && (
                         <Listbox
                             ref={listboxRef}
                             as='ul'
-                            className='absolute top-full left-0 w-full mt-1 bg-white border border-gray-300  rounded shadow-lg'
+                            className='absolute top-full left-0 w-full mt-1 text-border bg-white border border-gray-300  rounded shadow-lg'
                         >
                             {filteredTasks.length > 0 ? (
                                 filteredTasks.map(task => (
@@ -98,10 +98,6 @@ const Navbar: FC = () => {
                         </Listbox>
                     )}
                 </div>
-
-                <button>
-                    <MdDarkMode className='text-2xl' />
-                </button>
             </div>
         </nav>
     );

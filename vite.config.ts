@@ -20,6 +20,7 @@ export default defineConfig({
             '@reducer': resolve(__dirname, 'src/reducer'),
             '@routes': resolve(__dirname, 'src/routes'),
             '@styles': resolve(__dirname, 'src/styles'),
+            '@ui': resolve(__dirname, 'src/ui'),
             '@utils': resolve(__dirname, 'src/utils'),
         },
     },

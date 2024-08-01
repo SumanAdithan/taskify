@@ -6,9 +6,9 @@ import { Outlet } from 'react-router-dom';
 
 const DesktopLayout: FC = () => {
     return (
-        <div className='flex bg-background w-screen h-screen'>
+        <div className='flex bg-background w-screen h-screen overflow-y-hidden'>
             <Sidebar />
-            <div className='w-full'>
+            <div className='w-full min-h-screen'>
                 <Navbar />
                 <Main>
                     <Outlet />

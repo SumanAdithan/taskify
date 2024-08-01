@@ -4,8 +4,16 @@ export default {
     theme: {
         extend: {
             colors: {
-                background: '#eff1f7',
-                primary: '#16bbe5',
+                background: '#030B15',
+                primary: '#00C4F4',
+                border: '#676767',
+                secondary: '#DC0046',
+            },
+            backgroundImage: {
+                'conic-gradient-primary':
+                    'conic-gradient(transparent,transparent,#00C4F4)',
+                'conic-gradient-secondary':
+                    'conic-gradient(transparent,transparent,#DC0046)',
             },
         },
     },
