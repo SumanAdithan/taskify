@@ -2,10 +2,18 @@ import { FC } from 'react';
 import { images } from '@/utils/images';
 import { MdEdit } from 'react-icons/md';
 import { MdDelete } from 'react-icons/md';
+import { useSidebarContext } from '@/hooks/useSidebarContext';
+import ToggleSidebar from '@/ui/ToggleSidebar';
+import { cn } from '@/utils/classNames';
 
 const Sidebar: FC = () => {
+    const { isOpen } = useSidebarContext();
+    console.log(isOpen);
     return (
-        <aside className='bg-background text-white border-e-2 border-e-border min-w-64 w-64 px-8 py-4 shadow-xl overflow-y-scroll'>
+        <ToggleSidebar
+            isOpen={isOpen}
+            className='bg-background text-white border-e-2 border-e-border shadow-xl min-w-64 px-8 py-4'
+        >
             <div className='flex items-center mt-2 gap-2'>
                 <div className='w-10 h-10 bg-primary '>
                     <img
@@ -73,7 +81,7 @@ const Sidebar: FC = () => {
                     </div>
                 </li>
             </ul>
-        </aside>
+        </ToggleSidebar>
     );
 };
 

@@ -8,8 +8,12 @@ interface SidebarProviderProps {
 export const SidebarProvider: FC<SidebarProviderProps> = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const toggleSidebar = () => {
-        setIsOpen(prev => !prev);
+    const toggleSidebar = (value?: boolean) => {
+        if (value === undefined) {
+            setIsOpen(prev => !prev);
+        } else {
+            setIsOpen(value);
+        }
     };
 
     return (

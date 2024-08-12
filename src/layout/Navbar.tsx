@@ -2,6 +2,7 @@ import { FC, useEffect, useRef, useState } from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { MdDarkMode } from 'react-icons/md';
 import { Input, Listbox, ListboxOption } from '@headlessui/react';
+import { useSidebarContext } from '@/hooks/useSidebarContext';
 
 interface Task {
     id: string;
@@ -9,6 +10,7 @@ interface Task {
 }
 
 const Navbar: FC = () => {
+    const { toggleSidebar } = useSidebarContext();
     const tasks: Task[] = [
         { id: '1', name: 'Task 1' },
         { id: '2', name: 'Task 2' },
@@ -60,7 +62,12 @@ const Navbar: FC = () => {
         <nav className='bg-background p-6 text-white shadow-md flex justify-between items-center border-b-2 border-b-border'>
             <div className='flex justify-center items-center gap-2'>
                 <div className='bg-primary p-1 rounded'>
-                    <RxHamburgerMenu className='text-3xl text-white' />
+                    <RxHamburgerMenu
+                        className='text-3xl text-white'
+                        onClick={() => {
+                            toggleSidebar();
+                        }}
+                    />
                 </div>
                 <div className='text-2xl'>Task</div>
             </div>

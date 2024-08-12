@@ -3,9 +3,9 @@ import MovingBorder from '@/ui/MovingBorder';
 
 const Home: FC = () => {
     return (
-        <div className=' flex gap-6 h-[750px]'>
+        <div className=' flex flex-col items-center xl:flex-row gap-6 h-[750px]'>
             <MovingBorder
-                className='w-1/2 p-1 shadow-xl bg-background '
+                className='w-1/2 p-1 shadow-xl bg-background w-full'
                 color='bg-conic-gradient-primary'
                 initialRotation={45}
             >
@@ -15,13 +15,13 @@ const Home: FC = () => {
                     </div>
                     <div className=' mt-4 p-4  '>
                         <ul className='bg-inherit p-4 h-[600px] border-x-2 border-x-border '>
-                            <li className='p-2 bg-primary'>hello</li>
+                            <li className='p-2 bg-primary text-white'>hello</li>
                         </ul>
                     </div>
                 </div>
             </MovingBorder>
             <MovingBorder
-                className='w-1/2 p-1 shadow-xl bg-background '
+                className='w-1/2 p-1 shadow-xl bg-background w-full'
                 color='bg-conic-gradient-secondary'
                 initialRotation={115}
             >
@@ -31,7 +31,9 @@ const Home: FC = () => {
                     </div>
                     <div className=' mt-4 p-4  '>
                         <ul className='bg-inherit p-4 h-[600px] border-x-2 border-x-border '>
-                            <li className='p-2 bg-primary'>hello</li>
+                            <li className='p-2 bg-secondary text-white'>
+                                hello
+                            </li>
                         </ul>
                     </div>
                 </div>

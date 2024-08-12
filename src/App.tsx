@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import TaskProvider from '@provider/TaskProvider';
+import TaskProvider from '@/contextProvider/TaskProvider';
 import TaskifyRoutes from '@routes';
-import SidebarProvider from '@provider/sidebarProvider';
+import SidebarProvider from '@/contextProvider/sidebarProvider';
 
 const App: FC = () => {
     return (
