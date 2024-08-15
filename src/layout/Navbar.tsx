@@ -59,7 +59,7 @@ const Navbar: FC = () => {
     }, []);
 
     return (
-        <nav className='bg-background p-6 text-white shadow-md flex justify-between items-center border-b-2 border-b-border'>
+        <nav className='bg-background p-6 text-white shadow-md flex justify-between items-center border-b-2 border-b-border '>
             <div className='flex justify-center items-center gap-2'>
                 <div className='bg-primary p-1 rounded'>
                     <RxHamburgerMenu

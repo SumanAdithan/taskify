@@ -13,9 +13,9 @@ const DesktopLayout: FC = () => {
     }, []);
 
     return (
-        <div className='flex bg-background w-screen h-screen overflow-y-hidden'>
+        <div className='flex bg-background w-screen h-screen xl:overflow-y-hidden'>
             <Sidebar />
-            <div className='w-full min-h-screen'>
+            <div className='w-full min-h-screen overflow-y-scroll'>
                 <Navbar />
                 <Main>
                     <Outlet />
