@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import MovingBorder from '@/ui/MovingBorder';
+import Prompt from '@/components/Prompt';
 
 const Home: FC = () => {
     return (
@@ -21,6 +22,7 @@ const Home: FC = () => {
                     </div>
                 </div>
             </MovingBorder>
+            <Prompt />
             <MovingBorder
                 className='w-full p-1 shadow-xl bg-background xl:w-1/2'
                 color='bg-conic-gradient-secondary'

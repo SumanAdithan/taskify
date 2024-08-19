@@ -8,11 +8,26 @@ export const taskReducer = (
 ): TaskState => {
     switch (action.type) {
         case 'ADD_TASK':
-            console.log('hello world');
-            return state;
-        case 'console':
-            console.log(action.payload);
-            return state;
+            return {
+                ...state,
+                tasks: [...state.tasks, action.payload],
+            };
+        case 'UPDATE_TASK':
+            return {
+                ...state,
+                tasks: state.tasks.map(task =>
+                    task.id === action.payload.id
+                        ? { ...task, ...action.payload }
+                        : task
+                ),
+            };
+        case 'DELETE_TASK':
+            return {
+                ...state,
+                tasks: state.tasks.filter(
+                    task => task.id !== action.payload.id
+                ),
+            };
         default:
             return state;
     }

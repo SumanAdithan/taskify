@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { MdDarkMode } from 'react-icons/md';
+// import { MdDarkMode } from 'react-icons/md';
 import { Input, Listbox, ListboxOption } from '@headlessui/react';
 import { useSidebarContext } from '@/hooks/useSidebarContext';
 
@@ -11,6 +11,7 @@ interface Task {
 
 const Navbar: FC = () => {
     const { toggleSidebar } = useSidebarContext();
+
     const tasks: Task[] = [
         { id: '1', name: 'Task 1' },
         { id: '2', name: 'Task 2' },
