@@ -7,6 +7,7 @@ import ToggleSidebar from '@/ui/ToggleSidebar';
 import { usePromptContext } from '@/hooks/usePromptContext';
 import { useTaskContext } from '@/hooks/useTasksContext';
 import { Input } from '@headlessui/react';
+import { Link } from 'react-router-dom';
 
 const Sidebar: FC = () => {
     const { isOpen } = useSidebarContext();
@@ -20,6 +21,7 @@ const Sidebar: FC = () => {
         if (!editingTaskId) {
             setEditingTaskId(taskId);
         } else {
+            updateTask(taskId);
             setEditingTaskId(null);
         }
         setEditedName(currentName);
@@ -79,41 +81,46 @@ const Sidebar: FC = () => {
                         key={task.id}
                         className='hover:rounded-md p-2 cursor-pointer hover:bg-primary border-b-2 border-b-border hover:border-0'
                     >
-                        <div className='flex items-center justify-between '>
-                            {editingTaskId ? (
-                                <Input
-                                    className={
-                                        'w-32 rounded-md bg-gray-500 p-1'
-                                    }
-                                    onChange={e =>
-                                        setEditedName(e.target.value)
-                                    }
-                                    onKeyDown={e => {
-                                        enterKeyDown(e, task.id);
-                                    }}
-                                    value={editedName}
-                                />
-                            ) : (
-                                <div>{task.name}</div>
-                            )}
-
-                            <div className='space-x-2'>
-                                <button className='h-4 w-4'>
-                                    <MdEdit
-                                        className='text-base'
-                                        onClick={() =>
-                                            handleEditClick(task.id, task.name)
+                        <Link to={`/id/${task.id}`}>
+                            <div className='flex items-center justify-between '>
+                                {editingTaskId ? (
+                                    <Input
+                                        className={
+                                            'w-32 rounded-md bg-gray-500 p-1'
                                         }
+                                        onChange={e =>
+                                            setEditedName(e.target.value)
+                                        }
+                                        onKeyDown={e => {
+                                            enterKeyDown(e, task.id);
+                                        }}
+                                        value={editedName}
                                     />
-                                </button>
-                                <button className='h-4 w-4'>
-                                    <MdDelete
-                                        className='text-base'
-                                        onClick={() => deleteTask(task.id)}
-                                    />
-                                </button>
+                                ) : (
+                                    <div>{task.name}</div>
+                                )}
+
+                                <div className='space-x-2'>
+                                    <button className='h-4 w-4'>
+                                        <MdEdit
+                                            className='text-base'
+                                            onClick={() => {
+                                                handleEditClick(
+                                                    task.id,
+                                                    task.name
+                                                );
+                                            }}
+                                        />
+                                    </button>
+                                    <button className='h-4 w-4'>
+                                        <MdDelete
+                                            className='text-base'
+                                            onClick={() => deleteTask(task.id)}
+                                        />
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </li>
                 ))}
             </ul>

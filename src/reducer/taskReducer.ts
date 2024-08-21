@@ -28,6 +28,12 @@ export const taskReducer = (
                     task => task.id !== action.payload.id
                 ),
             };
+        case 'ADD_SUBTASK': {
+            return {
+                ...state,
+                // tasks: state.tasks.map(task=>action.payload.id === task.id?{...task,subTasks:[...subTasks,{}]})
+            };
+        }
         default:
             return state;
     }

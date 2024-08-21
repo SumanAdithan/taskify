@@ -10,7 +10,7 @@ export interface Task {
     id: string;
     name: string;
     isDone: boolean;
-    subTask?: SubTask[];
+    subTasks?: SubTask[];
 }
 
 // interface for taskState (used for initial state in reducer, etc)

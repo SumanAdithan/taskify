@@ -3,6 +3,7 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 // import { MdDarkMode } from 'react-icons/md';
 import { Input, Listbox, ListboxOption } from '@headlessui/react';
 import { useSidebarContext } from '@/hooks/useSidebarContext';
+import { useTaskContext } from '@/hooks/useTasksContext';
 
 interface Task {
     id: string;
@@ -11,12 +12,7 @@ interface Task {
 
 const Navbar: FC = () => {
     const { toggleSidebar } = useSidebarContext();
-
-    const tasks: Task[] = [
-        { id: '1', name: 'Task 1' },
-        { id: '2', name: 'Task 2' },
-        { id: '3', name: 'Task 3' },
-    ];
+    const { tasks } = useTaskContext().state;
 
     const [search, setSearch] = useState<string>('');
     const [filteredTasks, setFilteredTasks] = useState<Task[]>([]);

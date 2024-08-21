@@ -26,6 +26,8 @@ const Prompt: FC = () => {
                     isDone: false,
                 },
             });
+            setInput('');
+
             togglePrompt();
         } else {
             togglePrompt();
