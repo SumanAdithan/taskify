@@ -28,12 +28,55 @@ export const taskReducer = (
                     task => task.id !== action.payload.id
                 ),
             };
-        case 'ADD_SUBTASK': {
+        case 'ADD_SUBTASK':
             return {
                 ...state,
-                // tasks: state.tasks.map(task=>action.payload.id === task.id?{...task,subTasks:[...subTasks,{}]})
+                tasks: state.tasks.map(task =>
+                    action.payload.taskId === task.id
+                        ? {
+                              ...task,
+                              subTasks: [
+                                  ...(task.subTasks ?? []),
+                                  action.payload.subTask,
+                              ],
+                          }
+                        : task
+                ),
             };
-        }
+        case 'UPDATE_SUBTASK':
+            return {
+                ...state,
+                tasks: state.tasks.map(task =>
+                    action.payload.taskId === task.id
+                        ? {
+                              ...task,
+                              subTasks: (task.subTasks ?? []).map(subTask =>
+                                  subTask.id === action.payload.subTask.id
+                                      ? {
+                                            ...subTask,
+                                            ...action.payload.subTask,
+                                        }
+                                      : subTask
+                              ),
+                          }
+                        : task
+                ),
+            };
+        case 'DELETE_SUBTASK':
+            return {
+                ...state,
+                tasks: state.tasks.map(task =>
+                    action.payload.taskId === task.id
+                        ? {
+                              ...task,
+                              subTasks: (task.subTasks ?? []).filter(
+                                  subTask =>
+                                      subTask.id !== action.payload.subTaskId
+                              ),
+                          }
+                        : task
+                ),
+            };
         default:
             return state;
     }

@@ -17,7 +17,7 @@ const Home: FC = () => {
         if (id) {
             setTask(state.tasks.find(task => id === task.id) || null);
         }
-    }, [id]);
+    }, [id, state]);
 
     const addSubTask = () => {
         if (input) {
@@ -59,11 +59,14 @@ const Home: FC = () => {
                         </div>
                         <div className=' mt-4 p-4  '>
                             <ul className='bg-inherit p-4 h-[600px] border-x-2 border-x-border '>
-                                {task?.subTasks?.map(task => (
-                                    <li className='p-2 bg-primary text-white'>
-                                        {task.name}
-                                    </li>
-                                ))}
+                                {task?.subTasks?.map(task => {
+                                    console.log(task);
+                                    return (
+                                        <li className='p-2 bg-primary text-white mb-2'>
+                                            {task.name}
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         </div>
                     </div>

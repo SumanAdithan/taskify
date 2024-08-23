@@ -8,4 +8,15 @@ export type TaskAction =
     | {
           type: 'ADD_SUBTASK';
           payload: { subTask: SubTask; taskId: string | undefined };
+      }
+    | {
+          type: 'UPDATE_SUBTASK';
+          payload: {
+              subTask: { id: string; name?: string; isdone?: string };
+              taskId: string | undefined;
+          };
+      }
+    | {
+          type: 'DELETE_SUBTASK';
+          payload: { subTaskId: string; taskId: string | undefined };
       };
