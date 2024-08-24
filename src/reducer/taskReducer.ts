@@ -66,7 +66,7 @@ export const taskReducer = (
             return {
                 ...state,
                 tasks: state.tasks.map(task =>
-                    action.payload.taskId === task.id
+                    task.id === action.payload.taskId
                         ? {
                               ...task,
                               subTasks: (task.subTasks ?? []).filter(
@@ -77,6 +77,40 @@ export const taskReducer = (
                         : task
                 ),
             };
+        case 'TOGGLE_SUBTASK_COMPLETION':
+            return {
+                ...state,
+                tasks: state.tasks.map(task =>
+                    action.payload.taskId === task.id
+                        ? {
+                              ...task,
+                              subTasks: (task.subTasks ?? []).map(subTask =>
+                                  subTask.id === action.payload.subTaskId
+                                      ? {
+                                            ...subTask,
+                                            isDone: !subTask.isDone,
+                                        }
+                                      : subTask
+                              ),
+                          }
+                        : task
+                ),
+            };
+
+        case 'REORDER_SUBTASKS': {
+            const { subTasks, taskId } = action.payload;
+            return {
+                ...state,
+                tasks: state.tasks.map(task =>
+                    task.id === taskId
+                        ? { ...task, subTasks: subTasks || [] } // Ensure subTasks is always defined
+                        : task
+                ),
+            };
+        }
+
+        case 'SET_INITIAL_STATE':
+            return action.payload;
         default:
             return state;
     }

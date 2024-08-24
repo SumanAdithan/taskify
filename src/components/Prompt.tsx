@@ -10,25 +10,29 @@ import { useState } from 'react';
 import { usePromptContext } from '@/hooks/usePromptContext';
 import { useTaskContext } from '@/hooks/useTasksContext';
 import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 
 const Prompt: FC = () => {
     const { isOpen, togglePrompt } = usePromptContext();
     const { dispatch } = useTaskContext();
     const [input, setInput] = useState('');
+    const navigate = useNavigate();
 
     const addTask = () => {
+        const newTaskId = uuidv4();
+
         if (input) {
             dispatch({
                 type: 'ADD_TASK',
                 payload: {
-                    id: uuidv4(),
+                    id: newTaskId,
                     name: input,
                     isDone: false,
                 },
             });
             setInput('');
-
             togglePrompt();
+            navigate(`/task/${newTaskId}`);
         } else {
             togglePrompt();
         }
