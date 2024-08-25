@@ -1,9 +1,11 @@
 import { FC } from 'react';
-import TaskProvider from '@/contextProvider/TaskProvider';
+import {
+    TaskProvider,
+    SidebarProvider,
+    PromptProvider,
+    ActiveTaskProvider,
+} from '@contextProvider';
 import TaskifyRoutes from '@routes';
-import SidebarProvider from '@/contextProvider/sidebarProvider';
-import PromptProvider from './contextProvider/promptProvider';
-import ActiveTaskProvider from './contextProvider/activeTaskProvider';
 
 const App: FC = () => {
     return (

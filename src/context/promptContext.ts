@@ -1,10 +1,13 @@
 import { createContext } from 'react';
 
-export interface promptContextProps {
-    isOpen: boolean;
-    togglePrompt: (value?: boolean) => void;
+// Interface defining the structure of the Prompt context
+export interface PromptContextProps {
+    isOpen: boolean; // Tracks whether the prompt is currently open or closed
+    togglePrompt: (value?: boolean) => void; // Function to toggle the prompt state
 }
 
-export const PromptContext = createContext<promptContextProps | undefined>(
+// Creating the Prompt context with an initial undefined value
+// This ensures that components using this context are properly wrapped with a provider
+export const PromptContext = createContext<PromptContextProps | undefined>(
     undefined
 );

@@ -1,14 +1,11 @@
 import { FC } from 'react';
-import MovingBorder from '@/ui/MovingBorder';
+import { MovingBorder } from '@ui';
 import { Droppable, Draggable } from '@hello-pangea/dnd';
 import { MdEdit, MdDelete } from 'react-icons/md';
-import { Task } from '@/models/taskModel';
+import { Task } from '@models';
 
 interface PendingTaskProps {
-    enterKeyDown: (
-        e: React.KeyboardEvent<HTMLInputElement>,
-        taskId: string
-    ) => void;
+    enterKeyDown: (e: React.KeyboardEvent<HTMLInputElement>, taskId: string) => void;
     handleEditClick: (taskId: string, currentName: string) => void;
     deleteTask: (taskId: string) => void;
     toggleCompletion: (taskId: string) => void;
@@ -59,43 +56,28 @@ const PendingTask: FC<PendingTaskProps> = ({
                                                     // Update the isDone property based on the destination list
                                                     <li
                                                         className={`p-2 bg-primary text-white mb-2 flex items-center justify-between select-none ${
-                                                            subTask.isDone
-                                                                ? 'line-through'
-                                                                : ''
+                                                            subTask.isDone ? 'line-through' : ''
                                                         }`}
                                                         onDoubleClick={() =>
-                                                            toggleCompletion(
-                                                                subTask.id
-                                                            )
+                                                            toggleCompletion(subTask.id)
                                                         }
                                                         ref={provided.innerRef}
                                                         {...provided.draggableProps}
                                                         {...provided.dragHandleProps}
                                                     >
-                                                        {editingTaskId ===
-                                                        subTask.id ? (
+                                                        {editingTaskId === subTask.id ? (
                                                             <input
                                                                 className='w-32 rounded-md bg-gray-500 p-1'
                                                                 onChange={e =>
-                                                                    setEditedName(
-                                                                        e.target
-                                                                            .value
-                                                                    )
+                                                                    setEditedName(e.target.value)
                                                                 }
                                                                 onKeyDown={e =>
-                                                                    enterKeyDown(
-                                                                        e,
-                                                                        subTask.id
-                                                                    )
+                                                                    enterKeyDown(e, subTask.id)
                                                                 }
-                                                                value={
-                                                                    editedName
-                                                                }
+                                                                value={editedName}
                                                             />
                                                         ) : (
-                                                            <div>
-                                                                {subTask.name}
-                                                            </div>
+                                                            <div>{subTask.name}</div>
                                                         )}
                                                         <div className='space-x-2'>
                                                             <button className='h-4 w-4'>
@@ -112,9 +94,7 @@ const PendingTask: FC<PendingTaskProps> = ({
                                                             <button
                                                                 className='h-4 w-4'
                                                                 onClick={() =>
-                                                                    deleteTask(
-                                                                        subTask.id
-                                                                    )
+                                                                    deleteTask(subTask.id)
                                                                 }
                                                             >
                                                                 <MdDelete className='text-base' />

@@ -1,14 +1,13 @@
 import { createContext, Dispatch } from 'react';
-import { TaskAction } from '@actions/taskAction';
-import { TaskState } from '@models/taskModel';
+import { TaskAction } from '@actions';
+import { TaskState } from '@models';
 
-// interface for task context props
-export interface taskContextProps {
-    state: TaskState;
-    dispatch: Dispatch<TaskAction>;
+// Interface for the shape of the Task context value
+export interface TaskContextProps {
+    state: TaskState; // The current state of tasks
+    dispatch: Dispatch<TaskAction>; // The dispatch function for task actions
 }
 
-// context api for task
-export const TaskContext = createContext<taskContextProps | undefined>(
-    undefined
-);
+// Creating the Task context
+// Initialized with undefined to ensure the provider must wrap the components using this context
+export const TaskContext = createContext<TaskContextProps | undefined>(undefined);

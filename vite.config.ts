@@ -1,12 +1,14 @@
 import { defineConfig } from 'vite';
+import postcss from './postcss.config';
 import react from '@vitejs/plugin-react-swc';
 import { resolve } from 'path';
+import tsconfigPaths from 'vite-plugin-tsconfig-paths';
 
 // https://vitejs.dev/config/
 export default defineConfig({
     resolve: {
         alias: {
-            '@': resolve(__dirname, 'src/'),
+            '@': resolve(__dirname, 'src'),
             '@actions': resolve(__dirname, 'src/actions'),
             '@assets': resolve(__dirname, 'src/assets'),
             '@components': resolve(__dirname, 'src/components'),
@@ -24,5 +26,8 @@ export default defineConfig({
             '@utils': resolve(__dirname, 'src/utils'),
         },
     },
-    plugins: [react()],
+    plugins: [react(), tsconfigPaths()],
+    css: {
+        postcss,
+    },
 });

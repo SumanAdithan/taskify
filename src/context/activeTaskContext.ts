@@ -1,10 +1,11 @@
 import { createContext } from 'react';
 
-export interface promptContextProps {
-    isActive: boolean;
-    toggleActive: (value?: boolean) => void;
+// Interface defining the structure of the active task context
+export interface ActiveTaskContextProps {
+    isActive: boolean; // Indicates if the task is currently active
+    toggleActive: (value?: boolean) => void; // Function to toggle the active status of the task
 }
 
-export const activeTaskContext = createContext<promptContextProps | undefined>(
-    undefined
-);
+// Creating the context for active task with an initial undefined value
+// This ensures that components using this context are properly wrapped with a provider
+export const ActiveTaskContext = createContext<ActiveTaskContextProps | undefined>(undefined);

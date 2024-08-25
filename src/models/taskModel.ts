@@ -1,19 +1,19 @@
-// interface for subTask
+// Interface representing a subtask within a task
 export interface SubTask {
-    id: string;
-    name: string;
-    isDone: boolean;
+    id: string; // Unique identifier for the subtask
+    name: string; // Name or description of the subtask
+    isDone: boolean; // Status indicating if the subtask is completed
 }
 
-// interface for task
+// Interface representing a main task
 export interface Task {
-    id: string;
-    name: string;
-    isDone: boolean;
-    subTasks?: SubTask[];
+    id: string; // Unique identifier for the task
+    name: string; // Name or description of the task
+    isDone: boolean; // Status indicating if the task is completed
+    subTasks?: SubTask[]; // Optional list of subtasks associated with the task
 }
 
-// interface for taskState (used for initial state in reducer, etc)
+// Interface representing the state structure for managing tasks
 export interface TaskState {
-    tasks: Task[];
+    tasks: Task[]; // Array of tasks, representing the current state of tasks
 }

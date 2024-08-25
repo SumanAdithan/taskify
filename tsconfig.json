@@ -12,21 +12,21 @@
         "baseUrl": "./src",
         "paths": {
             "@/*": ["./*"],
-            "@actions/*": ["actions/*"],
+            "@actions": ["actions"],
             "@assets/*": ["assets/*"],
-            "@components/*": ["components/*"],
-            "@constants/*": ["constants/*"],
-            "@context/*": ["context/*"],
-            "@hooks/*": ["hooks/*"],
-            "@layout/*": ["layout/*"],
-            "@models/*": ["models/*"],
-            "@pages/*": ["pages/*"],
-            "@provider/*": ["provider/*"],
-            "@reducer/*": ["reducer/*"],
+            "@components": ["components"],
+            "@constants": ["constants"],
+            "@context": ["context"],
+            "@hooks": ["hooks"],
+            "@layout": ["layout"],
+            "@models": ["models"],
+            "@pages": ["pages"],
+            "@contextProvider": ["contextProvider"],
+            "@reducer": ["reducer"],
             "@routes": ["routes"],
-            "@styles/*": ["styles/*"],
-            "@ui/*": ["ui/*"],
-            "@utils/*": ["utils/*"]
+            "@styles": ["styles"],
+            "@ui": ["ui"],
+            "@utils": ["utils"]
         }
     }
 }
