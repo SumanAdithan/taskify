@@ -1,5 +1,5 @@
 // Importing image assets
-import logo from '@assets/images/.png';
+import logo from '@assets/images/logo.png';
 
 // Defining the shape of the image assets object
 interface ImageAssets {
