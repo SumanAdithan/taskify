@@ -1,16 +1,16 @@
 import { FC, useEffect, useState, useRef } from 'react';
 import { Task } from '@/models/taskModel';
-import MovingBorder from '@/ui/MovingBorder';
 import Prompt from '@/components/Prompt';
 import { useTaskContext } from '@/hooks/useTasksContext';
 import { v4 as uuidv4 } from 'uuid';
 import { useParams, useNavigate } from 'react-router-dom';
-import { MdDelete, MdEdit } from 'react-icons/md';
 import {
     loadFromLocalStorage,
     saveToLocalStorage,
 } from '@/utils/localStorageUtils';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import { DragDropContext } from '@hello-pangea/dnd';
+import PendingTask from '@/components/PendingTask';
+import CompletedTask from '@/components/CompletedTask';
 
 const LOCAL_STORAGE_KEY = 'taskState';
 
@@ -163,221 +163,26 @@ const Home: FC = () => {
             </div>
             <DragDropContext onDragEnd={handleDragEnd}>
                 <div className='flex flex-col items-center xl:flex-row gap-6 xl:h-[750px]'>
-                    <MovingBorder
-                        className='w-full p-1 shadow-xl bg-background xl:w-1/2'
-                        color='bg-conic-gradient-primary'
-                        initialRotation={45}
-                    >
-                        <Droppable droppableId='pendingTasks'>
-                            {provided => (
-                                <div
-                                    {...provided.droppableProps}
-                                    className='relative bg-inherit h-full p-4 w-full'
-                                    ref={provided.innerRef}
-                                >
-                                    <div className='p-4 bg-primary text-white text-center rounded-md'>
-                                        Pending Tasks
-                                    </div>
-                                    <div className='mt-4 p-4'>
-                                        <ul className='bg-inherit p-4 h-[600px] border-x-2 border-x-border'>
-                                            {task?.subTasks
-                                                ?.filter(
-                                                    subTask => !subTask.isDone
-                                                )
-                                                ?.map((subTask, index) => (
-                                                    <Draggable
-                                                        key={subTask.id}
-                                                        draggableId={subTask.id}
-                                                        index={index}
-                                                    >
-                                                        {provided => (
-                                                            // Update the isDone property based on the destination list
-                                                            <li
-                                                                className={`p-2 bg-primary text-white mb-2 flex items-center justify-between select-none ${
-                                                                    subTask.isDone
-                                                                        ? 'line-through'
-                                                                        : ''
-                                                                }`}
-                                                                onDoubleClick={() =>
-                                                                    toggleCompletion(
-                                                                        subTask.id
-                                                                    )
-                                                                }
-                                                                ref={
-                                                                    provided.innerRef
-                                                                }
-                                                                {...provided.draggableProps}
-                                                                {...provided.dragHandleProps}
-                                                            >
-                                                                {editingTaskId ===
-                                                                subTask.id ? (
-                                                                    <input
-                                                                        className='w-32 rounded-md bg-gray-500 p-1'
-                                                                        onChange={e =>
-                                                                            setEditedName(
-                                                                                e
-                                                                                    .target
-                                                                                    .value
-                                                                            )
-                                                                        }
-                                                                        onKeyDown={e =>
-                                                                            enterKeyDown(
-                                                                                e,
-                                                                                subTask.id
-                                                                            )
-                                                                        }
-                                                                        value={
-                                                                            editedName
-                                                                        }
-                                                                    />
-                                                                ) : (
-                                                                    <div>
-                                                                        {
-                                                                            subTask.name
-                                                                        }
-                                                                    </div>
-                                                                )}
-                                                                <div className='space-x-2'>
-                                                                    <button className='h-4 w-4'>
-                                                                        <MdEdit
-                                                                            className='text-base'
-                                                                            onClick={() =>
-                                                                                handleEditClick(
-                                                                                    subTask.id,
-                                                                                    subTask.name
-                                                                                )
-                                                                            }
-                                                                        />
-                                                                    </button>
-                                                                    <button
-                                                                        className='h-4 w-4'
-                                                                        onClick={() =>
-                                                                            deleteTask(
-                                                                                subTask.id
-                                                                            )
-                                                                        }
-                                                                    >
-                                                                        <MdDelete className='text-base' />
-                                                                    </button>
-                                                                </div>
-                                                            </li>
-                                                        )}
-                                                    </Draggable>
-                                                ))}
-                                            {provided.placeholder}
-                                        </ul>
-                                    </div>
-                                </div>
-                            )}
-                        </Droppable>
-                    </MovingBorder>
-                    <MovingBorder
-                        className='w-full p-1 shadow-xl bg-background xl:w-1/2'
-                        color='bg-conic-gradient-secondary'
-                        initialRotation={115}
-                    >
-                        <Droppable droppableId='completedTasks'>
-                            {provided => (
-                                <div
-                                    {...provided.droppableProps}
-                                    className='relative bg-inherit h-full p-4 w-full'
-                                    ref={provided.innerRef}
-                                >
-                                    <div className='p-4 bg-secondary text-white text-center rounded-md'>
-                                        Completed Tasks
-                                    </div>
-                                    <div className='mt-4 p-4'>
-                                        <ul className='bg-inherit p-4 h-[600px] border-x-2 border-x-border'>
-                                            {task?.subTasks
-                                                ?.filter(
-                                                    subTask => subTask.isDone
-                                                )
-                                                ?.map((subTask, index) => (
-                                                    <Draggable
-                                                        key={subTask.id}
-                                                        draggableId={subTask.id}
-                                                        index={index}
-                                                    >
-                                                        {provided => (
-                                                            <li
-                                                                className={`p-2 bg-secondary text-white mb-2 flex items-center justify-between select-none ${
-                                                                    subTask.isDone
-                                                                        ? 'line-through'
-                                                                        : ''
-                                                                }`}
-                                                                onDoubleClick={() =>
-                                                                    toggleCompletion(
-                                                                        subTask.id
-                                                                    )
-                                                                }
-                                                                ref={
-                                                                    provided.innerRef
-                                                                }
-                                                                {...provided.draggableProps}
-                                                                {...provided.dragHandleProps}
-                                                            >
-                                                                {editingTaskId ===
-                                                                subTask.id ? (
-                                                                    <input
-                                                                        className='w-32 rounded-md bg-gray-500 p-1'
-                                                                        onChange={e =>
-                                                                            setEditedName(
-                                                                                e
-                                                                                    .target
-                                                                                    .value
-                                                                            )
-                                                                        }
-                                                                        onKeyDown={e =>
-                                                                            enterKeyDown(
-                                                                                e,
-                                                                                subTask.id
-                                                                            )
-                                                                        }
-                                                                        value={
-                                                                            editedName
-                                                                        }
-                                                                    />
-                                                                ) : (
-                                                                    <div>
-                                                                        {
-                                                                            subTask.name
-                                                                        }
-                                                                    </div>
-                                                                )}
-                                                                <div className='space-x-2'>
-                                                                    <button className='h-4 w-4'>
-                                                                        <MdEdit
-                                                                            className='text-base'
-                                                                            onClick={() =>
-                                                                                handleEditClick(
-                                                                                    subTask.id,
-                                                                                    subTask.name
-                                                                                )
-                                                                            }
-                                                                        />
-                                                                    </button>
-                                                                    <button
-                                                                        className='h-4 w-4'
-                                                                        onClick={() =>
-                                                                            deleteTask(
-                                                                                subTask.id
-                                                                            )
-                                                                        }
-                                                                    >
-                                                                        <MdDelete className='text-base' />
-                                                                    </button>
-                                                                </div>
-                                                            </li>
-                                                        )}
-                                                    </Draggable>
-                                                ))}
-                                            {provided.placeholder}
-                                        </ul>
-                                    </div>
-                                </div>
-                            )}
-                        </Droppable>
-                    </MovingBorder>
+                    <PendingTask
+                        task={task}
+                        enterKeyDown={enterKeyDown}
+                        handleEditClick={handleEditClick}
+                        deleteTask={deleteTask}
+                        toggleCompletion={toggleCompletion}
+                        editingTaskId={editingTaskId}
+                        editedName={editedName}
+                        setEditedName={setEditedName}
+                    />
+                    <CompletedTask
+                        task={task}
+                        enterKeyDown={enterKeyDown}
+                        handleEditClick={handleEditClick}
+                        deleteTask={deleteTask}
+                        toggleCompletion={toggleCompletion}
+                        editingTaskId={editingTaskId}
+                        editedName={editedName}
+                        setEditedName={setEditedName}
+                    />
                 </div>
             </DragDropContext>
             <Prompt />
