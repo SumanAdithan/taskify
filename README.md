@@ -1,6 +1,6 @@
 # Taskify
 
-Taskify is a task management application built with Vite, React, and TypeScript. It leverages Tailwind CSS for styling and includes features for managing tasks and subtasks efficiently. The application utilizes Framer Motion for animations, `hello-pangea/dnd` for drag-and-drop functionality, and `uuid` for generating unique IDs. State management is handled using React Context and Reducers.
+Taskify is a task management application built with `Vite`, `React`, and `TypeScript`. It leverages `Tailwind CSS` for styling and includes features for managing tasks and subtasks efficiently. The application utilizes `Framer Motion` for animations, `hello-pangea/dnd` for drag-and-drop functionality, and `uuid` for generating unique IDs. State management is handled using React Context and Reducers.
 
 ## Features
 
